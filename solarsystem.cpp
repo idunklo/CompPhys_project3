@@ -1,12 +1,23 @@
 #include "solarsystem.h" //header file
 #include <cmath> 
+using namespace std;
 
-SolarSystem::SolarSystem(){
+SolarSystem::SolarSystem():
+    m_kineticEnergy(0);
+    m_potentialEnergy(0);
 
 }
 
-SolarSystem::createCelestialBody(){
+CelestialBody& SolarSystem::createCelestialBody(){
 
     //
 
+}  
+
+void SolarSystem::calculateForcesAndEnergy(){
+
 }
+
+
+
+
