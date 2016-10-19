@@ -21,8 +21,6 @@ int main(int argc, char* argv[]){
         cout <<"position is" << body.position << "and velocity" << body.velocity << endl;
     }
 
-    cout <<earth.position << endl;
-
 
     return 0;
 }

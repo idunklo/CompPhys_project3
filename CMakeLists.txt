@@ -9,12 +9,14 @@ set(SOURCES
     celestialbody.cpp
     solarsystem.cpp
     vec3.cpp
+    euler.cpp
     )
 
 set(HEADERS
     celestialbody.h
     solarsystem.h
     vec3.h
+    euler.h
     )
 
 add_executable(main_project main.cpp ${SOURCES} ${HEADERS})
