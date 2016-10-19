@@ -14,6 +14,8 @@ class SolarSystem
         void calculateForcesAndEnergy();
         int numberOfBodies() const;
 
+        std::vector<CelestialBody> &bodies();
+
     private:
         std::vector<CelestialBody> m_bodies;
         vec3 m_angularMomentum;

@@ -42,7 +42,16 @@ void SolarSystem::calculateForcesAndEnergy(){
             body1.force += oneForce;
             body2.force += oneForce;
         }
-    }
+    }  
+}
+
+int SolarSystem::numberOfBodies() const{
+
+    return m_bodies.size();
+}
+
+std::vector<CelestialBody> &SolarSystem::bodies() {
+    return m_bodies;
 }
 
 
