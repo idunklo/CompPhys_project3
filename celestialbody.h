@@ -10,9 +10,10 @@ class CelestialBody
         vec3 velocity;
         vec3 force;
         double mass;
+        std::string name;
 
-        CelestialBody(vec3 position, vec3 velocity, double mass);
-        CelestialBody(double x, double y, double z, double vx, double vy, double vz, double mass);
+        CelestialBody(vec3 position, vec3 velocity, double mass, std::string name);
+        CelestialBody(double x, double y, double z, double vx, double vy, double vz, double mass, std::string name);
         void resetForce();
         
 };
