@@ -17,7 +17,6 @@ void Euler::integrateOneStep(SolarSystem &system){
         body.position += m_dt * body.velocity;
         body.velocity += m_dt * body.force / body.mass; 
 
-        std::cout  <<body.position  <<std::endl;
     }
 }
 

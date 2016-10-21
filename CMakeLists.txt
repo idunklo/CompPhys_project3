@@ -10,6 +10,7 @@ set(SOURCES
     solarsystem.cpp
     vec3.cpp
     euler.cpp
+    verlet.cpp
     )
 
 set(HEADERS
@@ -17,6 +18,7 @@ set(HEADERS
     solarsystem.h
     vec3.h
     euler.h
+    verlet.h
     )
 
 add_executable(main_project main.cpp ${SOURCES} ${HEADERS})

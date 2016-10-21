@@ -1,6 +1,7 @@
 #include "solarsystem.h" //header file
 #include <cmath> 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 SolarSystem::SolarSystem():
@@ -36,12 +37,15 @@ void SolarSystem::calculateForcesAndEnergy(){
 
             vec3 deltaRVector = body1.position - body2.position;
             double dr = deltaRVector.length(); //finding distance between bodies. 
+            
+            //double pi = 2*acos(0.0);  
 
             //calculating forces
-            double G = 6.6740E-11; //m^2 kg^-1 s^-2
-            vec3 oneForce  = (G * body1.mass * body2.mass/dr) * deltaRVector;
-            body1.force += oneForce;
+            double G = 4*(M_PI*M_PI); 
+            vec3 oneForce  = (G * body1.mass * body2.mass/(dr*dr*dr)) * deltaRVector;
+            body1.force -= oneForce;
             body2.force += oneForce;
+
         }
     }  
 }
@@ -51,8 +55,9 @@ int SolarSystem::numberOfBodies() const{
     return m_bodies.size();
 }
 
-void SolarSystem::writeToFile(string filename){ 
+void SolarSystem::writeToFile(){ 
 
+    /*
     if(!m_file.good()){
         m_file.open(filename.c_str(), ofstream::out);
         if(!m_file.good()){
@@ -60,20 +65,26 @@ void SolarSystem::writeToFile(string filename){
             terminate();
         }
     }
+    */
     
-    m_file << numberOfBodies() << endl; //TODO does this write first line of file?
-    m_file << "second line of file I guess, no idea what's supposed to stad here" <<endl;
+    //m_file << "name" << " position" <<endl; skips this so it will be easier 
+    //to read file in python. 
 
     for(CelestialBody &body : m_bodies){
 
-        m_file  << body.position.x() << body.position.y() << body.position.z() << "\n";
+       m_file  << setprecision(15) << body.position.x() <<" " << body.position.y() << " " << body.position.z() <<" ";
     }
+    m_file <<"\n";
 }
 
     
 
 std::vector<CelestialBody> &SolarSystem::bodies() {
     return m_bodies;
+}
+
+std::ofstream &SolarSystem::get_ostream(){
+    return m_file;
 }
 
 
