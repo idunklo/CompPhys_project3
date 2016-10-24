@@ -14,6 +14,9 @@ class SolarSystem
         void calculateForcesAndEnergy();
         int numberOfBodies() const;  
 
+        double kineticEnergy() const; 
+        double potentialEnergy() const; 
+        double totalEnergy() const;
         void writeToFile();
         std::vector<CelestialBody> &bodies();  
         std::ofstream &get_ostream();

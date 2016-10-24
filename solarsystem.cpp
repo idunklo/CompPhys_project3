@@ -30,7 +30,7 @@ void SolarSystem::calculateForcesAndEnergy(){
 
     for(int i = 0; i < numberOfBodies() ; i++){ 
         //looping over all bodies. Also looping over the last element to get E_k.
-        CelestialBody &body1 = m_bodies[i];
+        CelestialBody &body1 = m_bodies[i];   
         for(int j = i+1; j < numberOfBodies(); j++){
             //Avoiding to calculate the force between the same bodies twice.
             CelestialBody &body2 = m_bodies[j];
@@ -46,13 +46,32 @@ void SolarSystem::calculateForcesAndEnergy(){
             body1.force -= oneForce;
             body2.force += oneForce;
 
+            m_potentialEnergy += -G*body1.mass*body2.mass/dr; 
+
         }
+
+        m_kineticEnergy += 0.5*body1.mass*body1.velocity.lengthSquared(); 
     }  
 }
 
 int SolarSystem::numberOfBodies() const{
 
     return m_bodies.size();
+}
+
+double SolarSystem::kineticEnergy() const{
+
+    return m_kineticEnergy;
+}
+
+double SolarSystem::potentialEnergy() const{
+
+    return m_potentialEnergy;
+}
+
+double SolarSystem::totalEnergy() const{
+    
+    return m_kineticEnergy + m_potentialEnergy;
 }
 
 void SolarSystem::writeToFile(){ 
